@@ -1,3 +1,5 @@
+//import { DESKTOP_BROWSERS } from "appium/build/lib/constants";
+
 export const config = {
     runner: 'local',
     specs: ['./tests/*.js'],
@@ -5,7 +7,7 @@ export const config = {
     capabilities: [{
         platformName: 'Android',
         'appium:deviceName': 'emulator-5554',
-        'appium:plaformVersion': '15',
+        'appium:platformVersion': '15',
         'appium:automationName': 'UiAutomator2',
         'appium:appPackage': 'io.appium.android.apis',
         'appium:appActivity': '.ApiDemos',
@@ -27,7 +29,7 @@ export const config = {
     },
     afterTest: async function (_, __, { passed }) {
         if (!passed) {
-            await DESKTOP_BROWSERS.takeScreenshot();
+            await browser.takeScreenshot();
         } 
     }
 }
